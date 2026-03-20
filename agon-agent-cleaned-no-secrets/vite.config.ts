@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
-
 export default defineConfig(async () => {
   const plugins = [react(), tailwindcss()];
   try {
@@ -9,8 +8,8 @@ export default defineConfig(async () => {
     const m = await import('./.vite-source-tags.js');
     plugins.push(m.sourceTags());
   } catch {}
-
   return {
+    base: '/',
     plugins,
     build: {
       chunkSizeWarningLimit: 600,
